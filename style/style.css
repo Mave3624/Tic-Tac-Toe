@@ -1,4 +1,82 @@
+* {
+    margin: 0px;
+    border: none;
+    padding: 0px;
+}
+
 body {
-    background-color: aliceblue;
-    text-align: center;
+    background-color: white;
+}
+
+.game-board {
+    background-color: rgb(255, 255, 255);
+    width: clamp(300px, 70vw, 350px);
+    height: clamp(300px, 70vw, 350px);
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    gap: 2px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.game-board>div>button {
+    width: 100%;
+    color: rgb(199, 198, 211);
+    height: 100%;
+    font-family: cursive;
+    font-size: 3rem;
+    border-radius: 2px;
+    background-color: rgb(112, 115, 118);
+
+}
+.game-board>div>button:disabled {
+    background-color: rgba(94, 105, 105, 0.809);
+}
+.restart > button {
+    width: 80px;
+    height: 30px;
+    color: rgb(0, 213, 237);
+    border-radius: 5px;
+    background-color: rgb(21, 123, 125);
+    font-family: serif, cursive, monospace, sans-serif;
+    font-size: 0.9rem;
+    margin: 0 auto;
+}
+.restart {
+    width: clamp(300px, 70vw, 350px);
+    display: grid;
+    grid-template: 1fr / max-content 1fr ;
+    margin: 0 auto;
+    gap: 5px;
+    box-sizing: border-box;
+    padding: 10px 5px;
+}
+.score {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr ;
+    justify-items: center;
+    align-items: center;
+    gap: 5px;
+}
+.score> p {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: gainsboro;
+}
+.winnerDisplayer {
+    height: 40px;
+    background-color: rgb(206, 206, 206);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    width: clamp(300px, 70vw, 350px);
+    margin: 10px auto 20px auto;
+}
+.winnerDisplayer>p {
+    font-family: monospace;
+    color: green;
+    font-size: 1.01rem;
+    font-weight: 700;
 }
