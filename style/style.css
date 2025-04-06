@@ -80,3 +80,7 @@ body {
     font-size: 1.01rem;
     font-weight: 700;
 }
+
+input {
+    background-color: red;
+}
