@@ -1,7 +1,10 @@
 const Boxes = document.querySelectorAll('.game-board>div>button')
 const restartbtn = document.querySelector('.restart>button')
 const Display = document.querySelector('.winnerDisplayer>p')
-const Player = document.querySelectorAll('.score>p')
+const OnameUnit = document.querySelector('#O')
+const OscoreUnit = document.querySelector('#Oscore')
+const XnameUnit = document.querySelector('#X')
+const XscoreUnit = document.querySelector('#Xscore')
 
 let PlayerName = (function()  {
     Xscore = 0
@@ -9,8 +12,8 @@ let PlayerName = (function()  {
     RoundWinner = ''
 
     playerOGetter = (input) => {
-        input = 'mave' //prompt('Enter your name Player O')
-        if (input === '') {
+        input = prompt('Enter your name Player O')
+        if (input === '' ||input === null) {
             input = 'Player O'
         }
         else{
@@ -20,8 +23,8 @@ let PlayerName = (function()  {
         return input
     }
     playerXGetter = () => {
-        input = '' //prompt('Enter your name Player X')
-        if (input === '') {
+        input = prompt('Enter your name Player X')
+        if (input === ''||input === null) {
             input = 'Player X'
         }
         else{
@@ -30,7 +33,7 @@ let PlayerName = (function()  {
         return input
     }
     starterLogic = (value) => {
-        let decision = true //confirm('Randomly pick first player')
+        let decision = confirm('Randomly pick first player')
             if (decision) {
                 value  = Number(Math.floor(Math.random() * 10))
             }
@@ -43,6 +46,13 @@ let PlayerName = (function()  {
     starterLogic()
     playerOne = playerOGetter()
     playerTwo = playerXGetter()
+    
+    OnameUnit.textContent = playerOne
+    XnameUnit.textContent = playerTwo
+    XscoreUnit.textContent = Xscore
+    OscoreUnit.textContent = Oscore
+
+
 
     return {playerOne, playerTwo, starterLogic, Xscore, Oscore, RoundWinner}
 })()
@@ -55,9 +65,9 @@ const GameBoradObject = (function() {
 
     starter = (starter) => {
         if (Boolean( Degit % 2)) {
-            starter = `Its Your jh Turn ${PlayerName.playerOne}`
+            starter = `Its Your Turn ${PlayerName.playerOne}`
         }
-        else starter = `Its Your jh Turn ${PlayerName.playerTwo}`
+        else starter = `Its Your Turn ${PlayerName.playerTwo}`
 
         return starter
     }
@@ -121,6 +131,8 @@ const Logic = (function() {
     ) {
         PlayerName.RoundWinner = PlayerName.playerTwo + ' won this round'
         PlayerName.Xscore++
+        XscoreUnit.textContent = PlayerName.Xscore
+
     }
     else if (GameBoradObject.GameBorad[0][1] ==='o' && GameBoradObject.GameBorad[0][2] === 'o' && GameBoradObject.GameBorad[0][3] ==='o' 
         || GameBoradObject.GameBorad[0][4] ==='o' && GameBoradObject.GameBorad[0][5] === 'o' && GameBoradObject.GameBorad[0][6] ==='o'
@@ -133,15 +145,15 @@ const Logic = (function() {
     ) {
         PlayerName.RoundWinner = PlayerName.playerOne + ' won this round'
         PlayerName.Oscore++
+        OscoreUnit.textContent = PlayerName.Oscore
     } }
 
     return {process}
 })()
 
 const DOM = (
+
     () => {
-        Player[0].textContent = PlayerName.playerOne
-        Player[1].textContent = PlayerName.playerTwo
 
         Boxes.forEach((element) => {
             element.addEventListener('click', () => {

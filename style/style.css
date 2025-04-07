@@ -32,8 +32,18 @@ body {
 .game-board>div>button:disabled {
     background-color: rgba(94, 105, 105, 0.809);
 }
+
+.restart {
+    width: clamp(300px, 70vw, 350px);
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr 1fr ;
+    margin: 0 auto;
+    gap: 5px;
+    box-sizing: border-box;
+    padding: 10px 0px;
+}
 .restart > button {
-    width: 80px;
+    width: 100px;
     height: 30px;
     color: rgb(0, 213, 237);
     border-radius: 5px;
@@ -41,28 +51,45 @@ body {
     font-family: serif, cursive, monospace, sans-serif;
     font-size: 0.9rem;
     margin: 0 auto;
-}
-.restart {
-    width: clamp(300px, 70vw, 350px);
-    display: grid;
-    grid-template: 1fr / max-content 1fr ;
-    margin: 0 auto;
-    gap: 5px;
-    box-sizing: border-box;
-    padding: 10px 5px;
+    grid-area: 2 / 2 / 2 / 3;
 }
 .score {
     display: grid;
-    grid-template: 1fr / 1fr 1fr ;
+    grid-area: 1 / 1 / 2 / 4;
+    grid-template: 1fr / 1fr 1fr;
     justify-items: center;
     align-items: center;
     gap: 5px;
+    font-family: monospace;
+    font-size: 1.1rem;
 }
-.score> p {
+.O {
+    display: grid;
+    grid-template: 1fr / 1fr  30px;
+    height: 100%;
     width: 100%;
-    height: 30px;
-    border-radius: 5px;
-    background-color: gainsboro;
+    align-items: center;
+    justify-items: center;
+}
+.X {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template: 1fr / 30px 1fr;
+    align-items: center;
+    justify-items: center;
+}
+#O {
+
+}
+#Oscore {
+    background-color: gray;
+}
+#X {
+
+}
+#Xscore {
+    background-color: pink;
 }
 .winnerDisplayer {
     height: 40px;
@@ -79,8 +106,4 @@ body {
     color: green;
     font-size: 1.01rem;
     font-weight: 700;
-}
-
-input {
-    background-color: red;
 }
