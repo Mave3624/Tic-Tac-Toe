@@ -1,10 +1,10 @@
 const Boxes = document.querySelectorAll('.game-board>div>button')
-const restartbtn = document.querySelector('.restart>button')
 const Display = document.querySelector('.winnerDisplayer>p')
 const OnameUnit = document.querySelector('#O')
 const OscoreUnit = document.querySelector('#Oscore')
 const XnameUnit = document.querySelector('#X')
 const XscoreUnit = document.querySelector('#Xscore')
+const restartbtn = document.querySelector('.restart>button')
 
 let PlayerName = (function()  {
     Xscore = 0
@@ -43,7 +43,6 @@ let PlayerName = (function()  {
             return value
     }
 
-    starterLogic()
     playerOne = playerOGetter()
     playerTwo = playerXGetter()
     
@@ -59,7 +58,6 @@ let PlayerName = (function()  {
 
 const GameBoradObject = (function() {
     let GameBorad = [{1:"", 2:"", 3:"", 4:"", 5:"", 6:"", 7:"", 8:"", 9:""}]
-
     let Degit = PlayerName.starterLogic()
     let taps = 0
 
@@ -157,8 +155,10 @@ const DOM = (
 
         Boxes.forEach((element) => {
             element.addEventListener('click', () => {
-                GameBoradObject.Play(element.getAttribute('id'))
-                element.textContent = GameBoradObject.GameBorad[0][element.getAttribute('id')]
+                if (GameBoradObject.GameBorad[0][element.getAttribute('id')] === '') {
+                    GameBoradObject.Play(element.getAttribute('id'))
+                    element.textContent = GameBoradObject.GameBorad[0][element.getAttribute('id')]
+                }
                 if (PlayerName.RoundWinner !== '') {
                     Boxes.forEach((element) => {
                         element.disabled = true
@@ -166,6 +166,7 @@ const DOM = (
                 }
             })
         })
+
         restartbtn.addEventListener('click', () => {
             GameBoradObject.restart()
                 Boxes.forEach((element) => {
